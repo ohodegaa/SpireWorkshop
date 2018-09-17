@@ -27,7 +27,7 @@ module.exports = register = (req, res) => {
         })
         .then(user => {
             user = user.getSafe();
-            res.set("X-Bearer-Token", jwt.sign({user}, process.env.JWT_SECRET));
+            res.set("X-Bearer-Token", "Bearer " + jwt.sign({user}, process.env.JWT_SECRET));
             res.status(201).send(user);
         })
         .catch(err => {
